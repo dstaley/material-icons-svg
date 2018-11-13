@@ -1,0 +1,23 @@
+{
+  "name": "material-icons-svg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "optimize": "node optimize.js",
+    "build": "npm run clean && npm run optimize && tsc && node scripts/build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@svgr/core": "^3.1.0",
+    "glob": "^7.1.2"
+  },
+  "dependencies": {
+    "@types/react": "^16.7.4",
+    "react": "^16.6.3",
+    "typescript": "^3.1.6"
+  }
+}
