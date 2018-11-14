@@ -1,16 +1,32 @@
 {
   "name": "material-icons-svg",
   "version": "1.0.0",
-  "description": "",
+  "description": "Material Design icons in React Component and SVG formats.",
   "main": "index.js",
-  "scripts": {
-    "clean": "rm -rf dist",
-    "optimize": "node optimize.js",
-    "build": "npm run clean && npm run optimize && tsc && node scripts/build.js"
+  "files": [
+    "icons",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dstaley/material-icons-svg"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "clean": "rm -rf ts-components components",
+    "optimize": "node optimize.js",
+    "build": "npm run clean && npm run optimize && tsc"
+  },
+  "keywords": [
+    "icons",
+    "material",
+    "material-design",
+    "google"
+  ],
+  "author": "Dylan Staley",
+  "contributors": [
+    "Material Design Authors"
+  ],
+  "license": "Apache-2.0",
   "devDependencies": {
     "@svgr/core": "^3.1.0",
     "glob": "^7.1.2"

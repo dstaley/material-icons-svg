@@ -2,7 +2,9 @@ const glob = require("glob");
 const path = require("path");
 const svgr = require("@svgr/core").default;
 const fsUtils = require("./fs-utils");
-const constants = require("./constants");
+
+const ICON_VARIANTS = ["baseline", "outline", "round", "twotone", "sharp"];
+const DEST_FOLDER = "ts-components";
 
 function getFilepaths() {
   return new Promise((resolve, reject) => {
@@ -52,8 +54,8 @@ function getVariant(filePath) {
 }
 
 async function makeVariantFolders() {
-  for (variant of constants.ICON_VARIANTS) {
-    const variantFolder = path.join(__dirname, "components", variant);
+  for (variant of ICON_VARIANTS) {
+    const variantFolder = path.join(__dirname, DEST_FOLDER, variant);
     await fsUtils.makeDirectory(variantFolder);
   }
 }
@@ -62,16 +64,19 @@ async function optimize(filePath) {
   const contents = await fsUtils.readFile(filePath);
   const svgFile = await createComponent(contents);
   const variant = getVariant(filePath);
-  const variantFolder = path.join(__dirname, "components", variant);
+  const variantFolder = path.join(__dirname, DEST_FOLDER, variant);
   const outputFilename = `${generateComponentName(filePath)}.tsx`;
-  console.log(outputFilename);
 
   await fsUtils.writeFile(path.join(variantFolder, outputFilename), svgFile);
 }
 
 (async () => {
-  const files = await getFilepaths();
-  await fsUtils.makeDirectory("components");
-  await makeVariantFolders();
-  await Promise.all(files.map(optimize));
+  try {
+    const files = await getFilepaths();
+    await fsUtils.makeDirectory(DEST_FOLDER);
+    await makeVariantFolders();
+    await Promise.all(files.map(optimize));
+  } catch (err) {
+    console.error(err);
+  }
 })();

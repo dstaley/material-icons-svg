@@ -8,7 +8,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",
-    "outDir": "dist/components"
+    "outDir": "components"
   },
-  "include": ["components"]
+  "include": ["ts-components"]
 }
