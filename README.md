@@ -47,4 +47,4 @@ The SVG files stored in the `icons` folder can be downloaded by running the incl
 
 ### Building
 
-After downloading the original SVG files, `npm run build` will run the build process. The SVG files will be converted to TypeScript React components with `svgr` and stored in the `components` folder. TypeScript will then compile the components into JavaScript files stored in the `dist` folder. Finally, the original SVG icons will be copied to the `dist` folder along with a `package.json` file.
+After downloading the original SVG files, `npm run build` will run the build process. The SVG files will be converted to TypeScript React components with `svgr` and stored in a `ts-components` folder. TypeScript will then compile the components into JavaScript files stored in a `components` folder.
